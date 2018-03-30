@@ -2,7 +2,7 @@
 画像のピクセル領域を元に物体の把持位置を検出するパッケージです。ただし、現段階では物体のクラスタ重心をそのまま把持位置として出力するだけです。
 
 # 実行方法
-このパッケージを使う際は、メッセージ型依存のため、別パッケージのe_object_recognizerをmakeする必要があります。
+このパッケージを使う際は、メッセージ型依存のため、別パッケージのe_object_recognizerをmakeする必要があります。  
     $ roslaunch realsense_camera r200_nodelet_rgbd.launch  
     $ rosrun e_grasping_position_detector grasping_position_detector  
 realsense_cameraは別パッケージ  
