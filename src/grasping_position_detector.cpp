@@ -13,7 +13,7 @@ private:
 public:
   explicit GraspingPositionDetector(ros::NodeHandle& n):
     nh(n){
-    centroid_calc = nh.subscribe("/camera/depth/image_raw",1,&GraspingPositionDetector::CalcCentroid,this);
+    centroid_calc = nh.subscribe("/camera/depth/points",1,&GraspingPositionDetector::CalcCentroid,this);
     object_image_range_sub = nh.subscribe("/object/image_range",1,&GraspingPositionDetector::ImageRangeCB,this);
     object_xyz_centroid_pub = nh.advertise<geometry_msgs::Point> ("/object/xyz_centroid", 1);
     filtered_pub = nh.advertise<sensor_msgs::PointCloud2>("/filtered_cloud",1);
@@ -26,6 +26,7 @@ public:
     image_range[BOTTOM]= input.bottom;
     image_range[LEFT]  = input.left;
     image_range[RIGHT] = input.right;
+    std::cout << " topic received" << std::endl;
     receive_range = TRUE;
   }
   void CalcCentroid(const sensor_msgs::PointCloud2::Ptr &input){
